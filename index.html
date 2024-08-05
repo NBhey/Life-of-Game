@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life of Game</title>
+    <link rel="stylesheet" href="./src/style/style.css">
+</head>
+<body>
+    <table>
+    </table>
+</body>
+
+<script>
+    const inputHeight = document.createElement('input');
+    inputHeight.type = 'number';
+    inputHeight.min = 0;
+    inputHeight.placeholder = 'Столбец';
+    const inputWidth = document.createElement('input');
+    inputWidth.type = 'number';
+    inputWidth.min = 0;
+    inputWidth.placeholder = 'Строка';
+    
+    document.querySelector('body').prepend(document.createElement('menu'));
+    
+    const menu = document.querySelector('menu');
+    menu.append(inputHeight,inputWidth);
+
+    function createField() {
+        console.log('1')
+        for (let i = 0; i < inputHeight.value; i+=1){
+            let tr = document.createElement('tr');
+            
+            for (let j = 0; j < inputWidth.value; j+=1){
+                let td = document.createElement('td');
+                tr.appendChild(td)
+            }
+            document.querySelector('table').append(tr);
+        }
+    }
+    inputHeight.addEventListener('change',createField)
+</script>
+</html>
