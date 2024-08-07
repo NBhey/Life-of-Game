@@ -16,6 +16,10 @@ const menu: HTMLElement | null  = document.querySelector('menu');
 menu?.append(inputHeight,inputWidth);
 
 function createField() {
+   const tr:HTMLElement =  document.createElement('tr');
+   const td:HTMLElement =  document.createElement('td');
+   tr.append(td);
+   document.querySelector('table')?.append(tr);
     // for (let i = 0; i < Number(inputHeight.value); i+=1){
     //     let tr = document.createElement('tr');
         
