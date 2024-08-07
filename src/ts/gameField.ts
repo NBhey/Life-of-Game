@@ -8,6 +8,7 @@ interface IGameField {
 export default class GameField implements IGameField {
     height: number;
     width: number;
+    currentState:number[][];
     constructor(height:number = 1, width:number = 0){
        this.height = height;
        this.width = width;
@@ -20,9 +21,12 @@ export default class GameField implements IGameField {
                 matrix[i].push(0)
             }
         }
-        return matrix
+        this.currentState = matrix
+        return this.currentState
     }
 
-    toggleCellState(x:number, y:number){}
+    toggleCellState(x:number, y:number){
+        this.currentState[y][x] = Number(!this.currentState[y][x])
+    }
     
 }
