@@ -33,6 +33,21 @@ export default class GameField implements IGameField {
     }
     
     nextGeneration(){
+      
+    }
+    getNumberOfAliveNeighbours(x: number, y: number): number {
+      let ret = 0;
+      for (let i = y - 1; i <= y + 1; i++) {
+        for (let j = x - 1; j <= x + 1; j++) {
+          if (i === y && j === x) {
+            continue;
+          }
+          if (this.field[i] && this.field[i][j]) {
+            ret += 1;
+          }
+        }
+      }
+      return ret;
     }
     setSize(nW:number, nH:number):[]{
         let newField = [];

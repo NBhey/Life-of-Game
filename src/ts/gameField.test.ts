@@ -96,11 +96,11 @@ describe("Game Field", () => {
         [1, 0, 0],
         [0, 0, 0],
       ]);
-      // gameField.setSize(2, 2);
-      // expect(gameField.getState()).toEqual([
-      //   [1, 0],
-      //   [0, 1],
-      // ]);
+      gameField.setSize(2, 2);
+      expect(gameField.getState()).toEqual([
+        [1, 0],
+        [0, 1],
+      ]);
     });
   });
 });
