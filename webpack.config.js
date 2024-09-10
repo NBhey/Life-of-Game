@@ -44,7 +44,6 @@ module.exports = {
     port: 8081,
   },
   plugins: [
-    // спросить у преподавтеля как описать цикл, чтобы пройтись по всем html файлам в папке
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "index.html"),
     }),

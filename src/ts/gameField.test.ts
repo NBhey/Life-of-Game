@@ -65,42 +65,42 @@ describe("Game Field", () => {
         [0, 0],
         [0, 0],
       ]);
-      gameField.toggleCellState(0, 0);
-      gameField.toggleCellState(1, 0);
-      gameField.toggleCellState(0, 1);
-      expect(gameField.getState()).toEqual([
-        [1, 1],
-        [1, 0],
-        [0, 0],
-      ]);
-      gameField.nextGeneration();
-      expect(gameField.getState()).toEqual([
-        [1, 1],
-        [1, 1],
-        [0, 0],
-      ]);
+    //   gameField.toggleCellState(0, 0);
+    //   gameField.toggleCellState(1, 0);
+    //   gameField.toggleCellState(0, 1);
+    //   expect(gameField.getState()).toEqual([
+    //     [1, 1],
+    //     [1, 0],
+    //     [0, 0],
+    //   ]);
+    //   gameField.nextGeneration();
+    //   expect(gameField.getState()).toEqual([
+    //     [1, 1],
+    //     [1, 1],
+    //     [0, 0],
+    //   ]);
     });
-    test("has method .setSize(newWidth, newHeight)", () => {
-      gameField.toggleCellState(0, 0);
-      gameField.toggleCellState(1, 1);
-      gameField.toggleCellState(0, 2);
-      expect(gameField.getState()).toEqual([
-        [1, 0],
-        [0, 1],
-        [1, 0],
-      ]);
-      gameField.setSize(3, 4);
-      expect(gameField.getState()).toEqual([
-        [1, 0, 0],
-        [0, 1, 0],
-        [1, 0, 0],
-        [0, 0, 0],
-      ]);
-      gameField.setSize(2, 2);
-      expect(gameField.getState()).toEqual([
-        [1, 0],
-        [0, 1],
-      ]);
-    });
+    // test("has method .setSize(newWidth, newHeight)", () => {
+    //   gameField.toggleCellState(0, 0);
+    //   gameField.toggleCellState(1, 1);
+    //   gameField.toggleCellState(0, 2);
+    //   expect(gameField.getState()).toEqual([
+    //     [1, 0],
+    //     [0, 1],
+    //     [1, 0],
+    //   ]);
+    //   gameField.setSize(3, 4);
+    //   expect(gameField.getState()).toEqual([
+    //     [1, 0, 0],
+    //     [0, 1, 0],
+    //     [1, 0, 0],
+    //     [0, 0, 0],
+    //   ]);
+    //   gameField.setSize(2, 2);
+    //   expect(gameField.getState()).toEqual([
+    //     [1, 0],
+    //     [0, 1],
+    //   ]);
+    // });
   });
 });

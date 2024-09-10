@@ -26,63 +26,37 @@ export default class GameField implements IGameField {
   }
   getState():number[][]{
     
-    return this.currentField;
+    return this.currentField ;
   }
   toggleCellState(column:number, row:number,):[]{
     this.currentField[row][column] = Number(!this.currentField[row][column])
   }
 
-  public nextGeneration() {
-    // next generation
-    this.currentField = this.getNextGeneration(this.currentField);
-  }
-
-  private getNextGeneration(currentField: Cell[][]): Cell[][] {
-    return currentField.map((row: Cell[], y: number) =>
-      row.map((cell: Cell, x: number) => {
-        const aliveNum = this.getNumberOfAliveNeighbours(x, y);
-        let cellState;
-        // в пустой (мёртвой) клетке, рядом с которой ровно три живые клетки, зарождается жизнь;
-        //  если у живой клетки есть две или три живые соседки, то эта клетка продолжает жить; в противном случае, если соседей меньше двух или больше трёх, клетка умирает («от одиночества» или «от перенаселённости»)
-        if (aliveNum === 3 && currentField[y][x] === 0) {
-          cellState = 1;
-        } else if ((aliveNum === 2 || aliveNum === 3) && currentField[y][x] === 1) {
-          cellState = 1;
-        } else {
-          cellState = 0;
+  nextGeneration() {
+    for (let i = 0; i < this.currentField.length; i+=1){
+      for (let j = 0; j < this.currentField[i].length; j+=1){
+        let numberLiveCellsNear = this.#checkLiveCellsNear(i,j)
+        if(this.currentField[i][j] == 1 && numberLiveCellsNear >= 2 && numberLiveCellsNear <= 3){
+          this.currentField[i][j] == 0
         }
-        return cellState;
-      })
-    );
+      }
+    }
+   
   }
-
-   getNumberOfAliveNeighbours(x: number, y: number): number {
+  #checkLiveCellsNear(xi:number, yj:number):number{
+    // let topRow = Boolean(this.currentField[i-1][j-1])+Boolean(this.currentField[i-1][j])+Boolean(this.currentField[i-1][j+1]);
+    // let currentRow = Boolean(this.currentField[i][j-1])+Boolean(this.currentField[i][j+1]);
+    // let bottomRow = Boolean(this.currentField[i+1][j-1])+Boolean(this.currentField[i+1][j])+Boolean(this.currentField[i+1][j+1]);
+    // let resultLiveCell = topRow + currentRow + bottomRow;
+    // return resultLiveCell;
     let count = 0;
-    for (let i = y - 1; i <= y + 1; i++) {
-      for (let j = x - 1; j <= x + 1; j++) {
-        if (i === y && j === x) {
-          continue;
-        }
-        if (this.currentField[i] && this.currentField[i][j]) {
-          count += 1;
+    for (let  i = xi - 1; i < xi + 1; i +=1 ){
+      for (let j = yj - 1; j < yj + 1; j +=1){
+        if (this.currentField[i][j]){
+        count +=1
         }
       }
     }
-    return count;
-  }
-
-  setSize(width: number, height: number) {
-    let newField = [];
-
-    for (let i = 0; i < height; i++) {
-      newField.push([]);
-      for (let j = 0; j < width; j++) {
-        newField[i].push(
-          this.currentField[i] && this.currentField[i][j] ? this.currentField[i][j] : 0
-        );
-      }
-    }
-
-    this.currentField = newField;
+   return count
   }
 }
