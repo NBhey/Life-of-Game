@@ -25,7 +25,7 @@ export default class GameField implements IGameField {
       this.currentField = field;
   }
   getState():number[][]{
-    
+  
     return this.currentField ;
   }
   toggleCellState(column:number, row:number,):[]{
@@ -37,7 +37,7 @@ export default class GameField implements IGameField {
       for (let j = 0; j < this.currentField[i].length; j+=1){
         let numberLiveCellsNear = this.#checkLiveCellsNear(i,j)
         if(this.currentField[i][j] == 1 && numberLiveCellsNear >= 2 && numberLiveCellsNear <= 3){
-          this.currentField[i][j] == 0
+          this.currentField[i][j] = 0;
         }
       }
     }
@@ -52,9 +52,12 @@ export default class GameField implements IGameField {
     let count = 0;
     for (let  i = xi - 1; i < xi + 1; i +=1 ){
       for (let j = yj - 1; j < yj + 1; j +=1){
-        if (this.currentField[i][j]){
-        count +=1
+        if(this.currentField[i] ){
+          if (this.currentField[i][j] ){
+            count +=1;
+            }
         }
+        
       }
     }
    return count
