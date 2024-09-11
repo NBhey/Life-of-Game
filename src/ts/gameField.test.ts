@@ -73,7 +73,9 @@ describe("Game Field", () => {
         [1, 0],
         [0, 0],
       ]);
+      const logSpy = jest.spyOn(global.console, 'log');
       gameField.nextGeneration();
+      // expect(logSpy).toHaveBeenCalledWith('some important message');
       expect(gameField.getState()).toEqual([
         [1, 1],
         [1, 1],
