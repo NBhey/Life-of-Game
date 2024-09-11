@@ -33,15 +33,21 @@ export default class GameField implements IGameField {
   }
 
   nextGeneration() {
+    const newArr = []
     for (let i = 0; i < this.currentField.length; i+=1){
+      newArr.push([])
       for (let j = 0; j < this.currentField[i].length; j+=1){
-        let numberLiveCellsNear = this.#checkLiveCellsNear(i,j)
-        if(this.currentField[i][j] == 1 && numberLiveCellsNear >= 2 && numberLiveCellsNear <= 3){
-          this.currentField[i][j] = 0;
-        }
+        let numberLiveCellsNear = this.#checkLiveCellsNear(i,j);
+        console.log(newArr);
+        if(this.currentField[i][j] == 1 && (numberLiveCellsNear == 2 || numberLiveCellsNear == 3)){
+          newArr[i].push(1);
+        } else if(this.currentField[i][j] == 0 && numberLiveCellsNear == 3){
+          newArr[i].push(1);
+        }    
+        else {newArr[i].push(0)}
       }
     }
-   
+    this.currentField = newArr;
   }
   #checkLiveCellsNear(xi:number, yj:number):number{
     // let topRow = Boolean(this.currentField[i-1][j-1])+Boolean(this.currentField[i-1][j])+Boolean(this.currentField[i-1][j+1]);
@@ -52,12 +58,8 @@ export default class GameField implements IGameField {
     let count = 0;
     for (let  i = xi - 1; i < xi + 1; i +=1 ){
       for (let j = yj - 1; j < yj + 1; j +=1){
-        if(this.currentField[i] ){
-          if (this.currentField[i][j] ){
-            count +=1;
-            }
-        }
-        
+        if( i === xi && j === yj){continue}
+        if(this.currentField[i] && this.currentField[i][j]){ count += 1}
       }
     }
    return count

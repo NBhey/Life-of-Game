@@ -65,20 +65,20 @@ describe("Game Field", () => {
         [0, 0],
         [0, 0],
       ]);
-    //   gameField.toggleCellState(0, 0);
-    //   gameField.toggleCellState(1, 0);
-    //   gameField.toggleCellState(0, 1);
-    //   expect(gameField.getState()).toEqual([
-    //     [1, 1],
-    //     [1, 0],
-    //     [0, 0],
-    //   ]);
-    //   gameField.nextGeneration();
-    //   expect(gameField.getState()).toEqual([
-    //     [1, 1],
-    //     [1, 1],
-    //     [0, 0],
-    //   ]);
+      gameField.toggleCellState(0, 0);
+      gameField.toggleCellState(1, 0);
+      gameField.toggleCellState(0, 1);
+      expect(gameField.getState()).toEqual([
+        [1, 1],
+        [1, 0],
+        [0, 0],
+      ]);
+      gameField.nextGeneration();
+      expect(gameField.getState()).toEqual([
+        [1, 1],
+        [1, 1],
+        [0, 0],
+      ]);
     });
     // test("has method .setSize(newWidth, newHeight)", () => {
     //   gameField.toggleCellState(0, 0);
