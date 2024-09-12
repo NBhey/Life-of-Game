@@ -1,8 +1,8 @@
 interface IGameField {
     getState():number[][];
     toggleCellState(row:number, column:number):[];
-    nextGeneration();
-    // setSize(nW:number, nH:number):[];
+    nextGeneration():[];
+    setSize(nW:number, nH:number):[];
 
 }
 
@@ -32,7 +32,7 @@ export default class GameField implements IGameField {
     this.currentField[row][column] = Number(!this.currentField[row][column])
   }
 
-  nextGeneration() {
+  nextGeneration():[] {
     const newArr = []
     
     for (let i = 0; i < this.currentField.length; i+=1){
@@ -60,7 +60,7 @@ export default class GameField implements IGameField {
     let count = 0;
     for (let  i = xi - 1; i <= xi + 1; i +=1 ){
       for (let j = yj - 1; j <= yj + 1; j +=1){
-        if( i === xi && j === yj){
+        if(i === xi && j === yj){
           continue
         }
         if(this.currentField[i] && this.currentField[i][j]){
@@ -68,7 +68,20 @@ export default class GameField implements IGameField {
         }
       }
     }
-    
    return count
+  }
+  setSize(nW:number, nH:number):[]{
+    const newArr = []
+    for (let i = 0; i < nH; i +=1){
+      newArr.push([])
+      for (let j = 0; j < nW; j+=1){
+        if (this.currentField[i] && this.currentField[i][j]){
+          newArr[i].push(this.currentField[i][j])
+        } else {
+          newArr[i].push(0)
+        }
+      }
+    }
+    this.currentField = newArr;
   }
 }

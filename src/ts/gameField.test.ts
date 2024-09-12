@@ -73,36 +73,34 @@ describe("Game Field", () => {
         [1, 0],
         [0, 0],
       ]);
-      const logSpy = jest.spyOn(global.console, 'log');
       gameField.nextGeneration();
-      // expect(logSpy).toHaveBeenCalledWith('some important message');
       expect(gameField.getState()).toEqual([
         [1, 1],
         [1, 1],
         [0, 0],
       ]);
     });
-    // test("has method .setSize(newWidth, newHeight)", () => {
-    //   gameField.toggleCellState(0, 0);
-    //   gameField.toggleCellState(1, 1);
-    //   gameField.toggleCellState(0, 2);
-    //   expect(gameField.getState()).toEqual([
-    //     [1, 0],
-    //     [0, 1],
-    //     [1, 0],
-    //   ]);
-    //   gameField.setSize(3, 4);
-    //   expect(gameField.getState()).toEqual([
-    //     [1, 0, 0],
-    //     [0, 1, 0],
-    //     [1, 0, 0],
-    //     [0, 0, 0],
-    //   ]);
-    //   gameField.setSize(2, 2);
-    //   expect(gameField.getState()).toEqual([
-    //     [1, 0],
-    //     [0, 1],
-    //   ]);
-    // });
+    test("has method .setSize(newWidth, newHeight)", () => {
+      gameField.toggleCellState(0, 0);
+      gameField.toggleCellState(1, 1);
+      gameField.toggleCellState(0, 2);
+      expect(gameField.getState()).toEqual([
+        [1, 0],
+        [0, 1],
+        [1, 0],
+      ]);
+      gameField.setSize(3, 4);
+      expect(gameField.getState()).toEqual([
+        [1, 0, 0],
+        [0, 1, 0],
+        [1, 0, 0],
+        [0, 0, 0],
+      ]);
+      gameField.setSize(2, 2);
+      expect(gameField.getState()).toEqual([
+        [1, 0],
+        [0, 1],
+      ]);
+    });
   });
 });
